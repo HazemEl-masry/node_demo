@@ -50,5 +50,55 @@ app.get("/loop", (req, res) => {
     res.send(`the numbers is: ${numbers}`)
 });
 
+// receive the response in json not in text like before
+app.get("/info", (req, res) => {
+    res.json({
+        name: req.query.name,
+        age: req.query.age,
+        city: req.query.city
+    });
+});
+
+app.get("/weather", (req, res) => {
+    res.json({
+        sate: 200,
+        message: "ok",
+        weather: {
+            day: Date.now(),
+            currentWeather: "Snowy",
+            temp: 12.6,
+            clouds: true,
+            possibleRains: false,
+            wind: 63.8,
+            minTemp: 2.4,
+            maxTemp: 8
+        },
+        time: "4:45 AM"
+    });
+});
+
+app.get("/weather2", (req, res) => {
+    res.json([
+        {
+            sate: 200,
+            message: "ok",
+            weather: {
+                day: Date.now(),
+                currentWeather: "Snowy",
+                temp: 12.6,
+                clouds: true,
+                possibleRains: false,
+                wind: 63.8,
+                minTemp: 2.4,
+                maxTemp: 8
+            },
+            time: "4:45 AM"
+        },
+        {
+            text: "Done👍."
+        }
+    ]);
+});
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
